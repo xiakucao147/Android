@@ -32,12 +32,12 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/icon_homepage" />
+                android:src="@mipmap/icon_weather" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:text="首页"
+                android:text="天气"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="#333333" />

@@ -25,9 +25,6 @@ public class HomeViewFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    public static com.example.androiddemojava.BottomFragment newInstance() {
-        return new com.example.androiddemojava.BottomFragment();
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
