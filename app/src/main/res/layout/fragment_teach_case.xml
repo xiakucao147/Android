@@ -5,57 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeViewActivity">
+    tools:context=".TeachCaseFragment">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center_horizontal"
-        android:background="#bae3eb">
-        <TextView
-            android:id="@+id/weatherTextView"
-            android:layout_width="wrap_content"
-            android:layout_weight="3"
-            android:layout_height="match_parent"
-            android:text="天气"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#333333" />
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/icon_homepage" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:text="首页"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#333333" />
-        </LinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/temperatureTextView"
-            android:layout_weight="3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="天气"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#333333" />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -63,10 +14,10 @@
         android:orientation="horizontal"
         android:gravity="center">
         <LinearLayout
-            android:id="@+id/boxMyPlace"
+            android:id="@+id/boxInterfaceDesign"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/my_place"
+            android:background="@drawable/tc_interfacedesign"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
@@ -78,12 +29,12 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_place"
+                android:src="@mipmap/icon_interfacedesign"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我的位置"
+                android:text="界面设计"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
@@ -92,16 +43,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="显示当前位置"
+                android:text="InterfaceDesign"
                 android:textColor="#B22222"
                 android:textSize="10sp" />
         </LinearLayout>
         <!--湿度导航-->
         <LinearLayout
-            android:id="@+id/boxStudentManager"
+            android:id="@+id/boxCheckbox"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/student_manager"
+            android:background="@drawable/tc_checkbox"
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -111,19 +62,19 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_student"
+                android:src="@mipmap/icon_checkbox"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="学生管理"
+                android:text="单选框"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="管理学生信息"
+                android:text="CheckBox"
                 android:layout_marginTop="10dp"
                 android:textSize="10sp"
                 android:textColor="#B22222" />
@@ -136,10 +87,10 @@
         android:orientation="horizontal"
         android:gravity="center">
         <LinearLayout
-            android:id="@+id/boxShot"
+            android:id="@+id/boxPhotoDownload"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/shot"
+            android:background="@drawable/tc_photodownload"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
@@ -151,12 +102,12 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_shot"
+                android:src="@mipmap/icon_download"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="拍一拍"
+                android:text="图片下载"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
@@ -165,16 +116,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="拍摄"
+                android:text="PhotoDownload"
                 android:textColor="#B22222"
                 android:textSize="10sp" />
         </LinearLayout>
         <!--湿度导航-->
         <LinearLayout
-            android:id="@+id/boxSmartPay"
+            android:id="@+id/boxPhotoScan"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/smart_pay"
+            android:background="@drawable/tc_photoscan"
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -185,19 +136,19 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_pay"
+                android:src="@mipmap/icon_photoscan"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="智慧支付"
+                android:text="图片浏览"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="支付功能"
+                android:text="Scan"
                 android:layout_marginTop="10dp"
                 android:textSize="10sp"
                 android:textColor="#B22222" />
@@ -210,10 +161,10 @@
         android:orientation="horizontal"
         android:gravity="center">
         <LinearLayout
-            android:id="@+id/boxWeb"
+            android:id="@+id/boxVideo"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/web_baidu"
+            android:background="@drawable/tc_video"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
@@ -225,12 +176,12 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_baidu"
+                android:src="@mipmap/icon_video"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="百度"
+                android:text="视频"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
@@ -239,16 +190,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="音乐"
+                android:text="Video"
                 android:textColor="#B22222"
                 android:textSize="10sp" />
         </LinearLayout>
         <!--湿度导航-->
         <LinearLayout
-            android:id="@+id/boxTools"
+            android:id="@+id/boxNews"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="@drawable/tools_box"
+            android:background="@drawable/tc_news"
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -259,103 +210,25 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/icon_tools"
+                android:src="@mipmap/icon_news"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工具箱"
+                android:text="今日头条"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:textColor="#B22222"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工具"
+                android:text="News"
                 android:layout_marginTop="10dp"
                 android:textSize="10sp"
                 android:textColor="#B22222" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="#bae3eb">
 
-        <RelativeLayout
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#ffffff">
-
-            <ImageView
-                android:id="@+id/imageHome"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_homepage"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                />
-
-            <TextView
-                android:id="@+id/textHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageHome"
-                android:text="Home"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/teaching_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageStudy"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_study"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/textStudy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageStudy"
-                android:text="Study"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/personalPage"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageMy"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_my"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/textMy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageMy"
-                android:text="Personl"/>
-        </RelativeLayout>
-    </LinearLayout>
 
 
 </LinearLayout>

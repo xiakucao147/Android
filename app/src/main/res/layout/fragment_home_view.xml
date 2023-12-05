@@ -5,57 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeViewActivity">
+    tools:context=".HomeViewFragment">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center_horizontal"
-        android:background="#bae3eb">
-        <TextView
-            android:id="@+id/weatherTextView"
-            android:layout_width="wrap_content"
-            android:layout_weight="3"
-            android:layout_height="match_parent"
-            android:text="天气"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#333333" />
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/icon_homepage" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:text="首页"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#333333" />
-        </LinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/temperatureTextView"
-            android:layout_weight="3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="天气"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#333333" />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -276,85 +228,6 @@
                 android:textSize="10sp"
                 android:textColor="#B22222" />
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="#bae3eb">
-
-        <RelativeLayout
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#ffffff">
-
-            <ImageView
-                android:id="@+id/imageHome"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_homepage"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                />
-
-            <TextView
-                android:id="@+id/textHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageHome"
-                android:text="Home"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/teaching_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageStudy"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_study"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/textStudy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageStudy"
-                android:text="Study"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/personalPage"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageMy"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icon_my"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/textMy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageMy"
-                android:text="Personl"/>
-        </RelativeLayout>
     </LinearLayout>
 
 
