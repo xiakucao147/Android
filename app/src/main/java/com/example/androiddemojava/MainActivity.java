@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void queryWeather() {
-        QWeather.getWeatherNow(MainActivity.this, "CN101280603", Lang.ZH_HANS, Unit.METRIC, new QWeather.OnResultWeatherNowListener() {
+        QWeather.getWeatherNow(MainActivity.this, "CN101040100", Lang.ZH_HANS, Unit.METRIC, new QWeather.OnResultWeatherNowListener() {
             public static final String TAG = "he_feng_now";
 
             @Override

@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 手机联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -25,16 +27,13 @@
         android:theme="@style/Theme.AndroidDemoJava"
         tools:targetApi="31">
         <activity
+            android:name=".CheckBoxActivity"
+            android:exported="false" />
+        <activity
             android:name=".InterfaceDesignActivity"
             android:exported="false" />
         <activity
             android:name=".BottomActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PersonnalViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TeachingCaseActivity"
             android:exported="false" />
         <activity
             android:name=".photoViewActivity"
@@ -44,9 +43,6 @@
             android:exported="false"
             android:label="@string/title_activity_tools_box_view"
             android:theme="@style/Theme.AndroidDemoJava" />
-        <activity
-            android:name=".HomeViewActivity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

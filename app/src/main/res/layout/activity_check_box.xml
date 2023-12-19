@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckBoxActivity"
+    android:orientation="vertical">
+
+    <!--自定义的单选-->
+    <RadioGroup
+        android:id="@+id/RadioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/radiobutton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|center"
+            android:text="维护"/>
+        <RadioButton
+            android:id="@+id/radiobutton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|center"
+            android:text="实现"/>
+        <RadioButton
+            android:id="@+id/radiobutton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:text="保障"/>
+        <RadioButton
+            android:id="@+id/radiobutton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:text="发展"/>
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkbox1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="15dp"
+        android:button="@null"
+        
+        android:text="A.发展好" />
+
+    <CheckBox
+        android:id="@+id/checkbox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="15dp"
+        android:button="@null"
+        
+        android:text="B.运用好" />
+
+    <CheckBox
+        android:id="@+id/checkbox3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="15dp"
+        android:button="@null"
+        
+        android:text="C.治理好"
+         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定">
+
+    </Button>
+
+</LinearLayout>

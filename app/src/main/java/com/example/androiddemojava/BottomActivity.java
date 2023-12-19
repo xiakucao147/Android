@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -20,22 +21,23 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     HomeViewFragment homeViewFragment=new HomeViewFragment();
     PersonalViewFragment personalViewFragment=new PersonalViewFragment();
     TeachCaseFragment teachCaseFragment=new TeachCaseFragment();
-//    LinearLayout boxTools;
-//    LinearLayout boxWeb;
-//    LinearLayout boxShot;
-//    LinearLayout boxSmartPay;
+
     View homeViewFragmentView;
     View personalViewFragmentView;
     View teachCaseFragmentView;
+    RelativeLayout home_button;
+    RelativeLayout teaching_button ;
+    RelativeLayout personalPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom);
 
 
-        RelativeLayout home_button=findViewById(R.id.btn1);
-        RelativeLayout teaching_button = findViewById(R.id.btn2);
-        RelativeLayout personalPage=findViewById(R.id.btn3);
+        home_button=findViewById(R.id.btn1);
+        teaching_button = findViewById(R.id.btn2);
+        personalPage=findViewById(R.id.btn3);
 
         homeViewFragmentView=homeViewFragment.getView();
         personalViewFragmentView=personalViewFragment.getView();
@@ -50,39 +52,9 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
         personalPage.setOnClickListener(this);
         home_button.setOnClickListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.main_content, homeViewFragment).commit();//默认页面
+        home_button.setBackgroundColor(Color.parseColor("#ffffff"));
 
         ShowWeather(weatherTextView,temperatureTextView);
-//        boxTools.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//        public void onClick(View v) {
-//                Intent intent=new Intent();
-//                intent.setClass(BottomActivity.this,ToolsBoxViewActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        boxWeb.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Uri uri= Uri.parse("https://baidu.com");
-//
-//                Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-//                startActivity(intent);
-//            }
-//        });
-//        boxSmartPay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                launchAlipay();
-//            }
-//        });
-//        boxShot.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent();
-//                intent.setClass(BottomActivity.this,photoViewActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
     }
 
@@ -92,18 +64,22 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
 
         if (viewId == R.id.btn1) {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_content, homeViewFragment).commit();
-//            boxTools = homeViewFragmentView.findViewById(R.id.boxTools);
-//            boxWeb = homeViewFragmentView.findViewById(R.id.boxWeb);
-//            boxShot = homeViewFragmentView.findViewById(R.id.boxShot);
-//            boxSmartPay = homeViewFragmentView.findViewById(R.id.boxSmartPay);
-
+            home_button.setBackgroundColor(Color.parseColor("#ffffff"));
+            teaching_button.setBackgroundColor(Color.parseColor("#bae3eb"));
+            personalPage.setBackgroundColor(Color.parseColor("#bae3eb"));
         } else if (viewId == R.id.btn2) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.main_content,teachCaseFragment ).commit();
+            home_button.setBackgroundColor(Color.parseColor("#bae3eb"));
+            teaching_button.setBackgroundColor(Color.parseColor("#ffffff"));
+            personalPage.setBackgroundColor(Color.parseColor("#bae3eb"));
         }
         else if (viewId == R.id.btn3) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.main_content, personalViewFragment).commit();
+            home_button.setBackgroundColor(Color.parseColor("#bae3eb"));
+            teaching_button.setBackgroundColor(Color.parseColor("#bae3eb"));
+            personalPage.setBackgroundColor(Color.parseColor("#ffffff"));
         }
     }
 

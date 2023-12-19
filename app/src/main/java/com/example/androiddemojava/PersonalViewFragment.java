@@ -1,64 +1,84 @@
 package com.example.androiddemojava;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PersonalViewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PersonalViewFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class PersonalViewFragment extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
+    TextView myPage;
+    TextView callMe;
     public PersonalViewFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PersonalViewFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PersonalViewFragment newInstance(String param1, String param2) {
-        PersonalViewFragment fragment = new PersonalViewFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_view, container, false);
+        View fragmentView=inflater.inflate(R.layout.fragment_personal_view, container, false);
+        myPage=fragmentView.findViewById(R.id.myPage);
+        callMe=fragmentView.findViewById(R.id.callMe);
+
+        myPage.setOnClickListener(this);
+        callMe.setOnClickListener(this);
+
+        return  fragmentView;
+    }
+
+    @Override
+    public void onClick(View view) {
+    int viewId=view.getId();
+    if(viewId==R.id.myPage){
+
+        final Uri uri= Uri.parse("https://www.cqjtu.edu.cn");
+
+        Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(intent);
+    }
+    else if(viewId==R.id.callMe)
+    {
+        if(shouldAskPermissions()){
+            askPermissions();
+        }
+
+        dialPhoneNumber(callMe.getText().toString()); // 替换为要拨打的实际电话号码
+    }
+    }
+    private void dialPhoneNumber(String phoneNumber) {
+        // 创建一个拨打电话的 Intent
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+        dialIntent.setData(Uri.parse("tel:"+phoneNumber));
+        startActivity(dialIntent);
+
+    }
+    private void askPermissions(){
+        String[] permissions = {
+                "android.permission.CALL_PHONE"
+        };
+        int requestCode = 200;
+        requestPermissions(permissions,requestCode);
+    }
+    protected boolean shouldAskPermissions(){
+        return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);//判断版本号
     }
 }
