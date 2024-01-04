@@ -1,6 +1,5 @@
 package com.example.androiddemojava;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.androiddemojava.cameraphoto.PhotoListActivity;
+import com.example.androiddemojava.sm.StudentManageActivity;
+import com.example.androiddemojava.sm.StudentRegisterActivity;
+
 
 public class HomeViewFragment extends Fragment implements View.OnClickListener {
 
@@ -20,7 +23,7 @@ public class HomeViewFragment extends Fragment implements View.OnClickListener {
     LinearLayout boxWeb;
     LinearLayout boxShot;
     LinearLayout boxSmartPay;
-
+    LinearLayout boxStudentManager;
     public HomeViewFragment() {
         // Required empty public constructor
     }
@@ -43,13 +46,13 @@ public class HomeViewFragment extends Fragment implements View.OnClickListener {
         boxWeb = fragmentView.findViewById(R.id.boxWeb);
         boxShot = fragmentView.findViewById(R.id.boxShot);
         boxSmartPay = fragmentView.findViewById(R.id.boxSmartPay);
-
+        boxStudentManager=fragmentView.findViewById(R.id.boxStudentManager);
         // Set click listeners for LinearLayouts
         boxTools.setOnClickListener(this);
         boxWeb.setOnClickListener(this);
         boxShot.setOnClickListener(this);
         boxSmartPay.setOnClickListener(this);
-
+        boxStudentManager.setOnClickListener(this);
         return fragmentView;
     }
 
@@ -72,12 +75,17 @@ public class HomeViewFragment extends Fragment implements View.OnClickListener {
             // Handle click on boxWeb
         } else if (viewId == R.id.boxShot) {
             Intent intent=new Intent();
-            intent.setClass(getActivity(), photoViewActivity.class);
+            intent.setClass(getActivity(), PhotoListActivity.class);
             startActivity(intent);
             // Handle click on boxShot
         } else if (viewId == R.id.boxSmartPay) {
             launchAlipay();
             // Handle click on boxSmartPay
+        } else if (viewId == R.id.boxStudentManager) {
+            Intent intent=new Intent();
+            intent.setClass(getActivity(), StudentRegisterActivity.class);
+            startActivity(intent);
+            // Handle click on boxShot
         }
     }
     private void launchAlipay() {

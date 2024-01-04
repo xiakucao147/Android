@@ -25,6 +25,7 @@ public class ToolsBoxViewActivity extends AppCompatActivity {
     LinearLayout addressBookLayout ;
     LinearLayout callButton ;;
     LinearLayout sendMessageButton;
+
     EditText phoneNumberEditText;
     EditText smsContentEditText ;
     protected final int REQUEST_PERMISSION_ADDRESSBOOK = 10;
@@ -65,49 +66,6 @@ public class ToolsBoxViewActivity extends AppCompatActivity {
          sendMessageButton = findViewById(R.id.sendMessageButton);
          phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
          smsContentEditText = findViewById(R.id.smsContentEditText);
-        // 找到 LinearLayout
-
-//        ActivityResultLauncher<Intent> intentActivityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-//                result -> {
-//                    if(result.getData()!=null&&result.getResultCode()== Activity.RESULT_OK){
-//                        String data=result.getData().getStringExtra("data").toString();
-//                        Log.d("aaaaaaaaaaaaa", "麻了");
-//                        Log.d("dddd", result.getData().getDataString());
-//                        //Toast.makeText(ToolsBoxViewActivity.this,data,Toast.LENGTH_SHORT).show();
-//                        if (data != null) {
-//                            ContentResolver reContentResolverol = getContentResolver();
-//                            Uri contactData = result.getData().getData();
-//                            Cursor cursor = reContentResolverol.query(contactData, null, null, null, null);
-//                            cursor.moveToFirst();     // 获取联系人的姓名
-//                            @SuppressLint("Range")
-//                            String username = cursor.getString(cursor
-//                                    .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-//                            @SuppressLint("Range")
-//                            String contactId = cursor.getString(cursor
-//                                    .getColumnIndex(ContactsContract.Contacts._ID));
-//
-//                            Cursor phone = reContentResolverol.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-//                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
-//                            while (phone.moveToNext()) {
-//                                // 获取联系人号码
-//                                @SuppressLint("Range")
-//                                String usernumber = phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-//                                String info=usernumber+" ("+username+")";
-//                                phoneNumberEditText.setText(info); // 显示返回的号码
-//                                Log.d("aaaaaaaaaaaaa", "麻了");
-//                            }
-//                        }
-//
-//                    }else{
-//                        Log.d("bbbbbbbbbbbb", "错误");
-//                    }
-//                });
-//        try {
-//
-//        } catch (Exception e) {
-//
-//        }
-        // 设置点击事件
 
         addressBookLayout.setOnClickListener(new View.OnClickListener() {
             @Override

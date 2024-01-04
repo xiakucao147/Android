@@ -9,7 +9,7 @@
 
     <!--自定义的单选-->
     <RadioGroup
-        android:id="@+id/RadioGroup1"
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -19,26 +19,26 @@
             android:layout_height="wrap_content"
             
             android:gravity="left|center"
-            android:text="维护"/>
+            android:text="JAVA"/>
         <RadioButton
             android:id="@+id/radiobutton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             
             android:gravity="left|center"
-            android:text="实现"/>
+            android:text="C"/>
         <RadioButton
             android:id="@+id/radiobutton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left|center"
-            android:text="保障"/>
+            android:text="C++"/>
         <RadioButton
             android:id="@+id/radiobutton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left|center"
-            android:text="发展"/>
+            android:text="Verilog"/>
 
     </RadioGroup>
 
@@ -50,7 +50,7 @@
         android:padding="15dp"
         android:button="@null"
         
-        android:text="A.发展好" />
+        android:text="选我" />
 
     <CheckBox
         android:id="@+id/checkbox2"
@@ -60,20 +60,12 @@
         android:padding="15dp"
         android:button="@null"
         
-        android:text="B.运用好" />
+        android:text="别选我" />
 
-    <CheckBox
-        android:id="@+id/checkbox3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="15dp"
-        android:button="@null"
-        
-        android:text="C.治理好"
-         />
+
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="确定">

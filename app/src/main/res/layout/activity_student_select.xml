@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".sm.StudentSelectActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="学生选课"
+        android:gravity="center">
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/bottomTools"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/stu_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="请输入学号查看课程"
+            android:inputType="phone"
+            android:background="@drawable/edittext_phonenumber"
+            android:gravity="left"
+            android:padding="8dp"
+            android:layout_weight="5">
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/show_courses"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_tools">
+
+        </ImageButton>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="已选课程"
+            android:gravity="center">
+        </TextView>
+        <ListView
+            android:id="@+id/listview_selected"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8">
+
+        </ListView>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="可选课程"
+            android:gravity="center">
+        </TextView>
+        <ListView
+            android:id="@+id/listview_no_selected"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8">
+
+        </ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

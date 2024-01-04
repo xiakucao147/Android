@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="majorArray">
+        <item>计算机类</item>
+        <item>物联网</item>
+        <item>土木</item>
+    </string-array>
+    
+</resources>

@@ -17,6 +17,14 @@ import com.qweather.sdk.bean.weather.WeatherNowBean;
 import com.qweather.sdk.view.HeConfig;
 import com.qweather.sdk.view.QWeather;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
     Button logging_btn;
 
@@ -33,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         logging_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //get_all_student();
                 queryWeather();
 
             }

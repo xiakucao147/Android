@@ -24,12 +24,9 @@ public class TeachCaseFragment extends Fragment implements View.OnClickListener{
 
     LinearLayout boxInterfaceDesign;
     LinearLayout boxCheckbox;
-
+    LinearLayout boxPhotoSwitcher;
+    LinearLayout downBox;
     private ActivityResultLauncher<Intent> activityResultLauncher;
-//    LinearLayout callButton = findViewById(R.id.callButton);;
-//    LinearLayout sendMessageButton = findViewById(R.id.sendMessageButton);
-//    EditText phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
-//    EditText smsContentEditText = findViewById(R.id.smsContentEditText);
 
     public TeachCaseFragment() {
     }
@@ -48,10 +45,13 @@ public class TeachCaseFragment extends Fragment implements View.OnClickListener{
         // Initialize LinearLayouts
         boxInterfaceDesign = fragmentView.findViewById(R.id.boxInterfaceDesign);
         boxCheckbox=fragmentView.findViewById(R.id.boxCheckbox);
+        downBox=fragmentView.findViewById(R.id.boxPhotoDownload);
+        boxPhotoSwitcher=fragmentView.findViewById(R.id.boxPhotoScan);
         // Set click listeners for LinearLayouts
         boxInterfaceDesign.setOnClickListener(this);
         boxCheckbox.setOnClickListener(this);
-
+        downBox.setOnClickListener(this);
+        boxPhotoSwitcher.setOnClickListener(this);
 
         Intent intent=new Intent(getActivity(),CheckBoxActivity.class);
         activityResultLauncher=registerForActivityResult(
@@ -80,36 +80,23 @@ public class TeachCaseFragment extends Fragment implements View.OnClickListener{
         }
         else if(viewId==R.id.boxCheckbox){
             Log.d("TeachCaseFragment", "boxCheckbox clicked");
-
-        Intent intent=new Intent(getActivity(),CheckBoxActivity.class);
-
-
-
-            //            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setTitle("选择球员和教练");
-            // 设置多选框
-//            builder.setMultiChoiceItems(players, null, new DialogInterface.OnMultiChoiceClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-//                    // 处理多选框点击事件
-//                    Toast.makeText(getActivity(), "选择了：" + players[which], Toast.LENGTH_SHORT).show();
-//                }
-//            });
-
-            // 设置单选框
-//            builder.setSingleChoiceItems(coachs, -1, new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    // 处理单选框点击事件
-//                    Toast.makeText(getActivity(), "选择了：" + coachs[which], Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//            AlertDialog dialog = builder.create();
-//            dialog.show();
+            Intent intent=new Intent();
+            intent.setClass(getActivity(),CheckBoxActivity.class);
+            startActivity(intent);
 
 
+        }
+        else if(viewId==R.id.boxPhotoDownload){
+            Intent intent=new Intent();
+            intent.setClass(getActivity(),PhotoDownLoadActivity.class);
+            startActivity(intent);
 
 
+        }
+        else if(viewId==R.id.boxPhotoScan){
+            Intent intent=new Intent();
+            intent.setClass(getActivity(),PhotoScanActivity.class);
+            startActivity(intent);
         }
     }
 }
