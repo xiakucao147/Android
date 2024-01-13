@@ -19,40 +19,53 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="姓名"
-        android:inputType="phone"
+        android:inputType="textPersonName"
         android:background="@drawable/edittext_phonenumber"
         android:gravity="left"
         android:padding="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
     <RadioGroup
-        android:id="@+id/RadioGroup1"
+        android:id="@+id/RadioGroupStuSex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"></View>
         <RadioButton
-            android:id="@+id/radiobutton1"
+            android:id="@+id/radiobuttonMale"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:checked="true"
             android:text="男"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"></View>
         <RadioButton
-            android:id="@+id/radiobutton2"
+            android:id="@+id/radiobuttonFemale"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
 
             android:gravity="center"
             android:text="女"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"></View>
 
     </RadioGroup>
     <EditText
-        android:id="@+id/stn_age"
+        android:id="@+id/stu_age"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="年龄"
-        android:inputType="phone"
+        android:inputType="number"
         android:background="@drawable/edittext_phonenumber"
         android:gravity="left"
         android:padding="8dp"
@@ -74,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="密码"
-        android:inputType="phone"
+        android:inputType="textPassword"
         android:background="@drawable/edittext_phonenumber"
         android:gravity="left"
         android:padding="8dp"
@@ -85,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="入学时间"
-        android:inputType="phone"
+        android:inputType="number"
         android:background="@drawable/edittext_phonenumber"
         android:gravity="left"
         android:padding="8dp"
@@ -94,18 +107,21 @@
 
 
     <Spinner
+        android:id="@+id/stu_faculty"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:entries="@array/facultyArray">
 
     </Spinner>
     <Spinner
+        android:id="@+id/stu_major"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:entries="@array/majorArray">
 
     </Spinner>
     <Button
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center"

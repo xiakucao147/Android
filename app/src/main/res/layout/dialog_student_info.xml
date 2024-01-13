@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<!-- 添加标题作为头部 -->
+    <TextView
+    android:id="@+id/tv_title_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="姓名"
+    android:textSize="10dp"
+    android:textStyle="bold"/>
+
+    <TextView
+    android:id="@+id/tv_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:text="小明"
+    android:textSize="15dp" />
+    <TextView
+        android:id="@+id/tv_age_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="年龄"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="15"
+        android:textSize="15dp" />
+
+    <TextView
+    android:id="@+id/tv_title_sex"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="性别"
+        android:textSize="10dp"
+    android:textStyle="bold" />
+
+    <TextView
+    android:id="@+id/tv_sex"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:text="男"
+    android:textSize="15dp" />
+
+    <TextView
+    android:id="@+id/tv_title_faculty"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="学院"
+        android:textSize="10dp"
+    android:textStyle="bold" />
+
+    <TextView
+    android:id="@+id/tv_faculty"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:text="信息科学与工程学院"
+    android:textSize="15dp" />
+
+    <TextView
+    android:id="@+id/tv_title_major"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="专业"
+        android:textSize="10dp"
+    android:textStyle="bold" />
+
+    <TextView
+    android:id="@+id/tv_major"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:text="物联网"
+    android:textSize="15dp" />
+    <TextView
+        android:id="@+id/tv_date_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="入学时间"
+            android:textSize="10dp"
+    android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="20210901"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/tv_tel_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="电话号码"
+            android:textSize="10dp"
+    android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="15696282183"
+        android:textSize="15dp" />
+<TextView
+    android:id="@+id/tv_title_no"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="学号"
+        android:textSize="10dp"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/tv_no"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:text="21540152"
+    android:textSize="15dp" />
+</LinearLayout>

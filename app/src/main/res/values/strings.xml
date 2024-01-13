@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidDemoJava</string>
+    <string name="app_name">Android课设</string>
     <string name="title_activity_tools_box_view">ToolsBoxViewActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

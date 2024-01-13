@@ -19,8 +19,11 @@ public class DataBaseAccess extends SQLiteOpenHelper {
         String sql="create table photo(\n "+
                 "id integer primary key autoincrement ,\n" +
                 " name text, \n"+
-                " info text\n"+
+                " info text,\n"+
+                " fileName text,\n"+
+                " filePath text\n"+
                 ")";
+        db.execSQL(sql);
     }
 
     @Override

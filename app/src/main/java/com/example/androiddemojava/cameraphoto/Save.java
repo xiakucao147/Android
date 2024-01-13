@@ -1,210 +1,280 @@
-//package com.example.androiddemojava.cameraphoto;
+//package com.example.androiddemojava.sm;
 //
 //import androidx.appcompat.app.AlertDialog;
 //import androidx.appcompat.app.AppCompatActivity;
-//import androidx.core.content.FileProvider;
 //
+//import android.app.Activity;
+//import android.app.DatePickerDialog;
 //import android.content.DialogInterface;
 //import android.content.Intent;
-//import android.graphics.Bitmap;
-//import android.graphics.BitmapFactory;
-//import android.net.Uri;
 //import android.os.Bundle;
-//import android.provider.MediaStore;
+//import android.os.Handler;
+//import android.util.Log;
 //import android.view.View;
-//import android.widget.AdapterView;
+//import android.widget.Button;
+//import android.widget.DatePicker;
 //import android.widget.EditText;
-//import android.widget.ImageView;
-//import android.widget.ListView;
+//import android.widget.RadioButton;
+//import android.widget.RadioGroup;
+//import android.widget.Spinner;
+//import android.widget.TextView;
+//import android.widget.Toast;
 //
-//import com.example.androiddemojava.Manifest;
 //import com.example.androiddemojava.R;
+//import com.google.gson.Gson;
 //
-//import java.io.File;
-//import java.io.FileNotFoundException;
-//import java.io.InputStream;
-//import java.net.URI;
-//import java.text.DateFormat;
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
+//
+//import java.io.IOException;
 //import java.text.SimpleDateFormat;
-//import java.util.ArrayList;
+//import java.util.Calendar;
 //import java.util.Date;
-//import java.util.List;
 //
-//public class PhotoListActivity extends AppCompatActivity {
-//    private ImageView btn_camera;
-//    private List<Photo> photos=new ArrayList<Photo>();
-//    private ListView photoList;
-//    private PhotoAdapter photoAdapter;
-//    private final static int REQUEST_CAMERA=200;
-//    private final static int IMAGE_REQUEST_CODE=300;
-//    private String filePath;
+//import okhttp3.Call;
+//import okhttp3.Callback;
+//import okhttp3.MediaType;
+//import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+//import okhttp3.RequestBody;
+//import okhttp3.Response;
+//
+//public class StudentRegisterActivity extends AppCompatActivity implements View.OnClickListener{
+//
+//    public String baseURL= null;
+//    String str=null;
+//    public String addURL= null;
+//    private OkHttpClient client;
+//    private JSONArray jsonArray;
+//    private JSONObject jsonObject;
+//
+//    EditText stu_name;//学生姓名
+//
+//    RadioGroup RadioGroupStuSex;//选择性别
+//    RadioButton radioButtonMale,radioButtonFemale;
+//    EditText stu_age;//学生年龄
+//    EditText stu_tel;//电话号码
+//    EditText stu_password;//密码
+//    EditText stu_date;//入学时间
+//    Spinner stu_faculty;//学院
+//    Spinner stu_major;//专业
+//
+//    Calendar calendar;
+//
+//    Button btn_sel_course,btn_admin,btn_register;
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_photo_list);
-//        btn_camera=findViewById(R.id.btn_camera);
-//        photoList=findViewById(R.id.photoList);
-//        initPhoto("");
-//        //    askPermission();
-//        btn_camera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //            addPic();
-//            }
-//        });
-//        photoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent=new Intent();
-//                intent.setClass(PhotoListActivity.this, PhotoShowActivity.class);
-//                intent.putExtra("position",i);
-//                startActivity(intent);
-//            }
-//        });
-//        photoList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Photo p=photos.get(i);
-//                AlertDialog.Builder myDialog=new AlertDialog.Builder(PhotoListActivity.this);
-//                return false;
-//            }
-//        });
+//        setContentView(R.layout.activity_student_register);
+//        baseURL= getString(R.string.backend_baseurl);
+//
+//
+//        stu_name        = findViewById(R.id.stu_name    );
+//        stu_date        = findViewById(R.id.stu_date    );
+//        stu_age         = findViewById(R.id.stu_age     );
+//        stu_tel         = findViewById(R.id.stu_tel     );
+//        stu_password    = findViewById(R.id.stu_password);
+//        stu_date        = findViewById(R.id.stu_date    );
+//        stu_faculty     = findViewById(R.id.stu_faculty );
+//        stu_major       = findViewById(R.id.stu_major   );
+//
+//        btn_admin=findViewById(R.id.btn_admin);
+//        btn_sel_course=findViewById(R.id.btn_sel_course);
+//        btn_register=findViewById(R.id.btn_register);
+//
+//        stu_date.setOnClickListener(this);
+//        btn_sel_course.setOnClickListener(this);
+//        btn_admin.setOnClickListener(this);
+//        btn_register.setOnClickListener(this);
+//
+//        calendar = Calendar.getInstance();
+//
+//        // 调用函数显示日期选择器
+//
+//
 //    }
+//    public static void showDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+//        // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+//        new DatePickerDialog(activity , themeResId,new DatePickerDialog.OnDateSetListener() {
+//            // 绑定监听器(How the parent is notified that the date is set.)
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                // 此处得到选择的时间，可以进行你想要的操作
+//                //tv.setText(year + (monthOfYear+1)+ dayOfMonth);
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
 //
-//    public void initPhoto(String key) {//从数据库取出以前保存的照片加载到ListView
-//        photos.clear();
-//        PhotoDAO dao=new PhotoDAO(this);
-//        for(Photo p:dao.findPhoto(key)){
-//            String uriS=p.getFilePath();
+//                // 格式化日期
+//                String formattedDate = sdf.format(new Date(year, monthOfYear, dayOfMonth));
 //
-//            Bitmap b=imageZip(Uri.parse(uriS));
-//            p.setBitmap(b);
-//            photos.add(p);
+//                // 将格式化后的日期设置为TextView的文本
+//                tv.setText(formattedDate);
+//
+//
+//            }
 //        }
-//        photoAdapter=new PhotoAdapter(this,photos);
-//        photoList.setAdapter(photoAdapter);
+//                // 设置初始日期
+//                , calendar.get(Calendar.YEAR)
+//                ,calendar.get(Calendar.MONTH)
+//                ,calendar.get(Calendar.DAY_OF_MONTH)).show();
 //    }
+//    public String studentRegister(Student student){
 //
-//    public Bitmap imageZip(Uri uri){
-//        //压缩uri指向的图片，返回位图
-//        Bitmap bitmap=null;
-//        InputStream is=null;
-//        try {
-//            is=getContentResolver().openInputStream(uri);
-//            BitmapFactory.Options options=new BitmapFactory.Options();
-//            options.inJustDecodeBounds=false;
-//            options.inSampleSize=5;
-//            bitmap=BitmapFactory.decodeStream(is,null,options);
-//            return bitmap;
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
+//        Log.d("StudentRegister",student.toString());
+//        client = new OkHttpClient();
+//        addURL="/student/add/";
+//        String param = new Gson().toJson(student);
 //
-//        }
-//
-//    }
-//    public void addPic(){//添加图片
-//        CharSequence[] items={"拍照","图库"};
-//        AlertDialog.Builder myDialog=new AlertDialog.Builder(this);
-//        myDialog.setItems(items, new DialogInterface.OnClickListener() {
+//        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), param);
+//        Log.d("body",body.toString());
+//        final Request request=new Request.Builder()
+//                .url(baseURL+addURL)
+//                .post(body)
+//                .build();
+//        final Call call=client.newCall(request);
+//        call.enqueue(new Callback() {
 //            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                switch (i){
-//                    case 0:
-//                        takeCamer();
-//                        break;
-//                    case 1:
-//                        getPhoto();
-//                        break;
+//            public void onFailure(Call call, IOException e) {
+//                Log.d("onFailure getMessage",e.getMessage());
+//            }
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//
+//                Log.d( " response.message() ",response.message());
+//                final String responseString = response.body().string();
+//                System.out.println(responseString);
+//                //Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+//
+//                try {
+//                    jsonObject=new JSONObject(responseString);
+//                    student.setStudent_num(jsonObject.getString("num"));
+//                    str=student.getStudent_num();
+//                    Log.d( "setStudent_num",student.getStudent_num());
+//
+//
+//                } catch (JSONException e) {
+//                    throw new RuntimeException(e);
 //                }
+//
+//
+////                runOnUiThread(new Runnable() {
+////                    @Override
+////                    public void run() {
+////                        try{
+////                            //jsonObject=new JSONObject(responseString);
+////                            student.setStudent_num(jsonObject.getString("num"));
+////                            //showDialog(student,jsonObject.getString("num"));
+////                            //jsonArray=jsonObject1.optJSONArray("data");
+//////                            for(int i=0;i<jsonArray.length();i++){
+//////                                jsonObject2=jsonArray.optJSONObject(i);
+//////                                String name=jsonObject2.getString("name");
+//////                                String score=jsonObject2.getString("score");
+//////                                Course course=new Course(name,score);
+//////                                mData.add(course);
+//////                            }
+////
+////                        } catch (JSONException e) {
+////                            throw new RuntimeException(e);
+////                        }
+////                    }
+////                });
+//
 //            }
 //        });
+//        return str;
 //    }
-//    public void askPermission(){
-//        String[] permissions={
-//                "android.permission.WRITE_EXTERNAL_STORAGE",
-//        };
-//        int requestCode=200;
-//        requestPermissions(permissions,requestCode);
-//    }
-//    public void takeCamer(){
-//        //打开相机
-//        Intent intent=new Intent();
-//        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-//        String photo_path=getImageFile();
-//        File file=new File(photo_path);
-//        Uri uri= FileProvider.getUriForFile(this,"com.example.androiddemojava.provider",file);
-//        filePath=uri.toString();
-//        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT,uri);
-//        startActivityForResult(intent,REQUEST_CAMERA);
-//    }
-//    public void getPhoto(){
-//        //跳转到手机相册
-//        Intent intent=new Intent(Intent.ACTION_PICK,
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        startActivityForResult(intent,IMAGE_REQUEST_CODE);
-//    }
-//    public String getImageFile(){
-//        //用时间生成照片名称
-//        String path=getFilesDir().getPath();//得到APP私有存储路径
-//        DateFormat sdf=new SimpleDateFormat("yyyyMMdd_hhmmss");
-//        String mDate=sdf.format(new Date());
-//        String mFilePath=path+"/"+mDate+".jpg";
-//        return mFilePath;
-//    }
-//    public void delete(URI uri){
-//        String path=uri.getPath();
-//        File file=new File(uri.getPath());
-//        file.delete();
-//        if(file.exists()){
-//            if(file.delete()){
-//                System.out.println("file Deleted :"+uri.getPath());
-//            }else{
-//                System.out.println("file Not Deleted :"+uri.getPath());
+//    public void showDialog(Student student){
+//        Log.d( "inshowDialognum","inshowDialognum");
+//        View show2Student = View.inflate(StudentRegisterActivity.this,R.layout.dialog_hint2student,null);
+//        final TextView stu_name = show2Student.findViewById(R.id.stu_name);
+//        final TextView stu_num = show2Student.findViewById(R.id.stu_num);
+//        stu_name.setText(str);
+//        stu_num.setText(str);
+//        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+//        myDialog.setTitle("学号");
+//        myDialog.setIcon(R.mipmap.icon_message);
+//        myDialog.setView(show2Student);
+//        myDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                //ImageFileAccess imageFileAccess=new ImageFileAccess(PhotoListActivity.this);
+//
 //            }
-//        }
+//        });
+//        // myDialog.setNegativeButton("取消", null);
+//        myDialog.show();
 //    }
 //    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == REQUEST_CAMERA) {//请求码是获得照片
-//            if (resultCode == RESULT_OK) {//从URI中获得图片
-//                View infoInputView = View.inflate(this, R.layout.mydialog, null);
-//                final EditText name_edit = infoInputView.findViewById(R.id.pName);
-//                final EditText info_edit = infoInputView.findViewById(R.id.pInfo);
-//                File file = new File(filePath);
-//                Uri uri = FileProvider.getUriForFile(CameraListActivity.this.getApplicationContext(),
-//                        "com.cqjtu.chenhe.rememberpassword.provider", file);
-//                try {
-//                    final Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-//                    info_edit.setHint("信息");
-//                    AlertDialog.Builder myDialog = new AlertDialog.Builder(CameraListActivity.this);
-//                    myDialog.setTitle("描述一下");
-//                    myDialog.setIcon(R.drawable.notes);
-//                    myDialog.setView(infoInputView);
-//                    myDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            String name = name_edit.getText().toString();
-//                            String info = info_edit.getText().toString();
-//                            Photo photo = new Photo();
-//                            photo.setFileName(name);
-//                            photo.setBitmap(bitmap);
-//                            photo.setInfo(info);
-//                            photo.setFilePath(filePath);
-//                            long i = photoDAO.insert(photo);//保存图片信息到数据库
-//                            //利用数据库数据刷新
-//                            photos = photoDAO.findPhoto();
-//                            initPhoto(photos);
-//                        }
-//                    });
-//                    myDialog.setNegativeButton("取消", null);
-//                    myDialog.show();
+//    public void onClick(View view) {
+//        int viewId=view.getId();
+//        if(viewId == R.id.stu_date){
+//            Toast.makeText(StudentRegisterActivity.this, "点击", Toast.LENGTH_SHORT).show();
+//            showDatePickerDialog(this, androidx.appcompat.R.style.Theme_AppCompat, stu_date, calendar);
+//        }
+//        else if(viewId==R.id.btn_admin){
+//            Intent intent=new Intent();
+//            intent.setClass(StudentRegisterActivity.this, StudentManageActivity.class);
+//            startActivity(intent);
+//        }
+//        if(viewId == R.id.btn_sel_course) {
+//            Intent intent=new Intent();
+//            intent.setClass(StudentRegisterActivity.this, StudentSelectActivity.class);
+//            startActivity(intent);
+//        }
+//        if(viewId == R.id.btn_register){
+//            String stuName = stu_name.getText().toString().trim();
+//            String stuAge = stu_age.getText().toString().trim();
+//            String stuTel = stu_tel.getText().toString().trim();
+//            String stuPassword = stu_password.getText().toString().trim();
+//            String stuDate = stu_date.getText().toString().trim();
+//            String stuMajor = stu_major.getSelectedItem().toString();
+//            String stuFaculty = stu_faculty.getSelectedItem().toString();
+//            // 检查是否为空并给出Toast提示
+////            if (stuName.isEmpty()) {
+////                Toast.makeText(getApplicationContext(), "学生姓名不能为空", Toast.LENGTH_SHORT).show();
+////
+////            }
+////            else if (stuAge.isEmpty()) {
+////                Toast.makeText(getApplicationContext(), "学生年龄不能为空", Toast.LENGTH_SHORT).show();
+////            }
+////            else if (stuTel.isEmpty()) {
+////                Toast.makeText(getApplicationContext(), "电话号码不能为空", Toast.LENGTH_SHORT).show();
+////            }
+////            else if (stuPassword.isEmpty()) {
+////                Toast.makeText(getApplicationContext(), "密码不能为空", Toast.LENGTH_SHORT).show();
+////            }
+////            else if (stuDate.isEmpty()) {
+////                Toast.makeText(getApplicationContext(), "入学时间不能为空", Toast.LENGTH_SHORT).show();
+////            }
+////            else{
+//            Student stu=new Student();
+//            stu.setName(stuName);
+//            stu.setAge(stuAge);
+//            stu.setTel(stuTel);
+//            stu.setEnrollment_date(stuDate);
+//            stu.setPassword(stuPassword);
+//            stu.setFaculty(stuFaculty);
+//            stu.setMajor(stuMajor);
+//            //Log.d( "num",studentRegister(stu));
+//            studentRegister(stu);
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
 //
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
+//                    stu.setStudent_num(str);
+//                    showDialog(stu);
+//                    // 你的延时执行的代码
 //                }
-//            }
+//            }, 200); // 3000毫秒，即3秒
+//
+//
+//
+//
+//            //}
+//
+//
+//
 //        }
 //    }
 //}

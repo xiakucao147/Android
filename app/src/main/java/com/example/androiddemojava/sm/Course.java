@@ -3,6 +3,7 @@ package com.example.androiddemojava.sm;
 public class Course {
     private String no;
     private String name;
+    private String score;
 
     @Override
     public String toString() {
@@ -13,9 +14,10 @@ public class Course {
                 '}';
     }
 
-    public Course(String name, String score) {
+    public Course(String no,String name, String score) {
         this.name = name;
         this.score = score;
+        this.no = no;
     }
 
     public String getNo() {
@@ -42,5 +44,5 @@ public class Course {
         this.score = score;
     }
 
-    private String score;
+
 }

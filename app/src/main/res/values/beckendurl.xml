@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="backend_baseurl">http://192.168.86.119:3000</string>
+    </resources>

@@ -5,23 +5,34 @@ import kotlin.Metadata;
 public class Student {
     private Integer no;
     private String name;
+    private String age;
+    private String major;
+    private String sex;
+    private String enrollment_date;
+    private String faculty;
+    private String tel;
+    private String head_icon;
+    private String password;
+    private String student_num;
+
 
     public Student(String name, String age, String major, String sex, String enrollment_date, String faculty, String tel, String head_icon, String password, String student_num) {
-        this.name = name;
-        this.age = age;
-        this.major = major;
-        this.sex = sex;
+        this.name   = name;
+        this.age    = age;
+        this.major  = major;
+        this.sex    = sex;
         this.enrollment_date = enrollment_date;
         this.faculty = faculty;
-        this.tel = tel;
+        this.tel    = tel;
         this.head_icon = head_icon;
         this.password = password;
         this.student_num = student_num;
     }
 
-    private String age;
-    private String major;
-    private String sex;
+    public Student() {
+    }
+
+
 
     @Override
     public String toString() {
@@ -128,10 +139,5 @@ public class Student {
         this.student_num = student_num;
     }
 
-    private String enrollment_date;
-    private String faculty;
-    private String tel;
-    private String head_icon;
-    private String password;
-    private String student_num;
+
 }

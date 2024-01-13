@@ -14,35 +14,35 @@
         android:gravity="center">
 
     </TextView>
-    <LinearLayout
-        android:id="@+id/bottomTools"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-        <EditText
-            android:id="@+id/stu_name"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:hint="请输入学号查看课程"
-            android:inputType="phone"
-            android:background="@drawable/edittext_phonenumber"
-            android:gravity="left"
-            android:padding="8dp"
-            android:layout_weight="5">
-        </EditText>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bottomTools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:gravity="center">-->
+<!--        <EditText-->
+<!--            android:id="@+id/stu_name"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:hint="请输入学号查看课程"-->
+<!--            android:inputType="phone"-->
+<!--            android:background="@drawable/edittext_phonenumber"-->
+<!--            android:gravity="left"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_weight="5">-->
+<!--        </EditText>-->
 
-        <ImageButton
-            android:id="@+id/show_courses"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@mipmap/icon_tools">
+<!--        <ImageButton-->
+<!--            android:id="@+id/show_courses"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@mipmap/icon_tools">-->
 
-        </ImageButton>
-    </LinearLayout>
+<!--        </ImageButton>-->
+<!--    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
